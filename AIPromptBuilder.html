@@ -98,4 +98,82 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Master Prompt Formula: Role + Task +
+      <p>Master Prompt Formula: Role + Task + Context = Focused, High-Impact Leadership Output[cite: 13, 14, 16].</p>
+    </div>
+  </footer>
+
+  <script>
+    let hasAttempted = false;
+
+    function evaluatePrompt() {
+      const input = document.getElementById("user-prompt-input").value.trim().toLowerCase();
+      const evalCard = document.getElementById("evaluation-card");
+      const evalTitle = document.getElementById("eval-title");
+      const evalDesc = document.getElementById("eval-desc");
+      const evalList = document.getElementById("eval-checklist");
+      const revealBtn = document.getElementById("btn-reveal");
+
+      if (input.length < 20) {
+        alert("Please write a complete prompt before submitting for evaluation.");
+        return;
+      }
+
+      // Unlock Reveal Button
+      hasAttempted = true;
+      revealBtn.disabled = false;
+      revealBtn.classList.add("btn-active");
+
+      // Evaluation criteria with margin for error
+      const roleMatches = ["role", "act as", "leader", "supervisor", "manager", "lead", "person", "tone of"];
+      const taskMatches = ["task", "draft", "write", "message", "reminder", "post", "slack", "teams", "channel", "email", "update"];
+      const contextMatches = ["context", "friendly", "lighthearted", "warm", "words", "limit", "sentences", "constraint", "respect", "dishwasher", "sink", "mugs", "clean"];
+
+      const hasRole = roleMatches.some(word => input.includes(word));
+      const hasTask = taskMatches.some(word => input.includes(word));
+      const hasContext = contextMatches.some(word => input.includes(word));
+
+      let score = 0;
+      if (hasRole) score++;
+      if (hasTask) score++;
+      if (hasContext) score++;
+
+      evalList.innerHTML = "";
+      
+      const roleLi = document.createElement("li");
+      roleLi.innerHTML = hasRole ? "✅ <strong>Role (R):</strong> Persona or leadership perspective established." : "❌ <strong>Role (R):</strong> Missing an explicit leadership role or persona instruction.";
+      evalList.appendChild(roleLi);
+
+      const taskLi = document.createElement("li");
+      taskLi.innerHTML = hasTask ? "✅ <strong>Task (T):</strong> Concrete communication deliverable specified." : "❌ <strong>Task (T):</strong> Unclear deliverable (specify a message, reminder, or channel update).";
+      evalList.appendChild(taskLi);
+
+      const contextLi = document.createElement("li");
+      contextLi.innerHTML = hasContext ? "✅ <strong>Context (C):</strong> Tone, operational boundaries, or constraints included." : "❌ <strong>Context (C):</strong> Missing guardrails (include word limits or friendly tone instructions).";
+      evalList.appendChild(contextLi);
+
+      evalCard.style.display = "block";
+
+      if (score === 3) {
+        evalCard.className = "eval-result eval-pass";
+        evalTitle.textContent = "Outstanding Prompt Architecture! (Score: 3/3)";
+        evalDesc.textContent = "Your prompt successfully applies the RTC framework with sufficient precision to prevent LLM hallucination and defensiveness.";
+      } else if (score === 2) {
+        evalCard.className = "eval-result eval-warn";
+        evalTitle.textContent = "Close Attempt — Minor Refinement Needed (Score: 2/3)";
+        evalDesc.textContent = "You have captured key elements, but one dimension of the RTC formula needs strengthening for optimal control.";
+      } else {
+        evalCard.className = "eval-result eval-fail";
+        evalTitle.textContent = "Incomplete Prompt Structure (Score: " + score + "/3)";
+        evalDesc.textContent = "This prompt risks triggering uncalibrated, robotic AI output. Review the checklist below and adjust.";
+      }
+    }
+
+    function revealModelPrompt() {
+      if (!hasAttempted) return;
+      const modelCard = document.getElementById("model-answer-card");
+      modelCard.style.display = modelCard.style.display === "none" ? "block" : "none";
+    }
+  </script>
+
+</body>
+</html>
