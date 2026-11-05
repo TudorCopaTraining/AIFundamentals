@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 3: RTC Prompt Builder</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --accent: #38bdf8;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+    .container {
+      max-width: 760px;
+      width: 100%;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .step-box {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: rgba(15, 23, 42, 0.4);
+    }
+    .step-title {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    label {
+      display: block;
+      padding: 0.6rem 0.8rem;
+      background: #243044;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    input[type="radio"]:checked + label {
+      border-color: var(--accent);
+      background: #0284c7;
+      color: #fff;
+    }
+    .output-box {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #000;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-family: monospace;
+      color: #38bdf8;
+    }
+    .hint {
+      display: none;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      margin-top: 0.4rem;
+    }
+    #r2:checked ~ .hint-r2,
+    #t1:checked ~ .hint-t1,
+    #c1:checked ~ .hint-c1 {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>Activity 3: The RTC Prompt Architect</h2>
+      <p>Fix the poor prompt: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> Select the optimal <strong>Role</strong>, <strong>Task</strong>, and <strong>Context</strong> components.</p>
+
+      <!-- Step 1: Role -->
+      <div class="step-box">
+        <div class="step-title">Step 1: Role (Who is the AI?)</div>
+        <input type="radio" name="role" id="r1">
+        <label for="r1">"Act as a formal disciplinary HR auditor..."</label>
+
+        <input type="radio" name="role" id="r2">
+        <label for="r2">"Act as an approachable, supportive team leader..."</label>
+        <div class="hint hint-r2">✅ Role calibrated: Establishes a collegial, collaborative posture.</div>
+      </div>
+
+      <!-- Step 2: Task -->
+      <div class="step-box">
+        <div class="step-title">Step 2: Task (What deliverable?)</div>
+        <input type="radio" name="task" id="t1">
+        <label for="t1">"Draft a short, lighthearted 3-sentence reminder message..."</label>
+
+        <input type="radio" name="task" id="t2">
+        <label for="t2">"Write a legally enforceable kitchen compliance memo..."</label>
+        <div class="hint hint-t1">✅ Task calibrated: Right-sizes the message scope for internal chat.</div>
+      </div>
+
+      <!-- Step 3: Context -->
+      <div class="step-box">
+        <div class="step-title">Step 3: Context (Constraints & Tone)</div>
+        <input type="radio" name="ctx" id="c1">
+        <label for="c1">"Tone is positive and polite, under 50 words, emphasizing team pride."</label>
+
+        <input type="radio" name="ctx" id="c2">
+        <label for="c2">"Threaten disciplinary escalation and shift deductions for repeat offenders."</label>
+        <div class="hint hint-c1">✅ Context calibrated: Protects team morale and culture.</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
