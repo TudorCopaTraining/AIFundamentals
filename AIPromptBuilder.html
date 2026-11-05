@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Task 3: AI Prompt Builder</title>
+  <title>Task 3: AI Prompt Builder for Team Leaders</title>
   <link rel="stylesheet" href="AIPromptBuilder.css" />
 </head>
 <body>
@@ -11,62 +11,100 @@
   <header class="header">
     <div class="container">
       <span class="badge">Activity 03</span>
-      <h1>The Role–Task–Context (RTC) Prompt Builder</h1>
-      <p>Transform ineffective prompts by selecting the ideal components under the RTC prompting framework.</p>
+      <h1>Team Leader Prompt Architect: The RTC Framework</h1>
+      <p>Transform ineffective leadership prompts into high-precision, balanced prompts using the Role, Task, and Context model.</p>
     </div>
   </header>
 
   <main class="container">
     <section class="card">
-      <div class="problem-box">
-        <strong>The Problem:</strong> A manager entered: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> The result was a punitive, 4-paragraph diatribe that damaged team morale.
+
+      <div class="lead-challenge">
+        <h3>The Leadership Challenge</h3>
+        <p>A manager entered this unrefined prompt: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> The AI generated a hostile, four-paragraph disciplinary threat that upset the entire team. As an operational Team Leader, re-architect this prompt using the <strong>RTC Formula</strong> to achieve compliance without damaging psychological safety.</p>
       </div>
 
-      <!-- Step 1: Role -->
+      <!-- STAGE 1: ROLE -->
       <div class="builder-stage">
-        <h3>1. Select the Role (R)</h3>
-        <p class="stage-sub">Who is the AI pretending to be?</p>
-        <div class="selection-list">
-          <input type="radio" id="role-1" name="rtc-r" />
-          <label for="role-1" class="option-btn">"Act as a strict disciplinary human resources investigator..."</label>
+        <div class="stage-header">
+          <span class="stage-tag">Step 1</span>
+          <h4>Define the Role (R)</h4>
+        </div>
+        <p class="stage-hint">Who is the AI pretending to be? (Sets emotional intelligence and team relationship baseline).</p>
 
-          <input type="radio" id="role-2" name="rtc-r" />
-          <label for="role-2" class="option-btn">"Act as an approachable, supportive team leader in an agile workplace..."</label>
+        <div class="options-stack">
+          <input type="radio" id="r-bad" name="rtc-r" />
+          <label for="r-bad" class="option-label">
+            "Act as a strict disciplinary human resources compliance officer conducting an inquiry into workplace policy infractions..."
+          </label>
 
-          <div class="stage-feedback fb-warn" id="fb-role-1">⚠️ This persona will cause the model to write adversarial, punitive copy.</div>
-          <div class="stage-feedback fb-good" id="fb-role-2">✅ Excellent. Sets an empathetic, peer-level leadership baseline.</div>
+          <input type="radio" id="r-good" name="rtc-r" />
+          <label for="r-good" class="option-label">
+            "Act as an approachable, supportive team leader who fosters high psychological safety and shared accountability in an operations unit..."
+          </label>
+
+          <div class="stage-feedback fb-bad" id="fb-r-bad">
+            ⚠️ <strong>Wrong Persona:</strong> This persona causes the LLM to default to punitive, adversarial legalisms that undermine team morale.
+          </div>
+          <div class="stage-feedback fb-good" id="fb-r-good">
+            ✅ <strong>Ideal Persona:</strong> Establishes a balanced, empathetic peer-level leadership baseline that encourages shared ownership.
+          </div>
         </div>
       </div>
 
-      <!-- Step 2: Task -->
+      <!-- STAGE 2: TASK -->
       <div class="builder-stage">
-        <h3>2. Select the Task (T)</h3>
-        <p class="stage-sub">What exact deliverable do you need built?</p>
-        <div class="selection-list">
-          <input type="radio" id="task-1" name="rtc-t" />
-          <label for="task-1" class="option-btn">"Draft a concise 3-sentence team channel reminder about kitchen hygiene."</label>
+        <div class="stage-header">
+          <span class="stage-tag">Step 2</span>
+          <h4>Define the Task (T)</h4>
+        </div>
+        <p class="stage-hint">What exact asset and channel are you delivering?</p>
 
-          <input type="radio" id="task-2" name="rtc-t" />
-          <label for="task-2" class="option-btn">"Write a formal corporate compliance warning regarding company property misuse."</label>
+        <div class="options-stack">
+          <input type="radio" id="t-good" name="rtc-t" />
+          <label for="t-good" class="option-label">
+            "Draft a concise 3-sentence team channel update (for Slack/Teams) reminding the team to rinse and load their mugs into the dishwasher."
+          </label>
 
-          <div class="stage-feedback fb-good" id="fb-task-1">✅ Concise, clear deliverable matched to daily communication channels.</div>
-          <div class="stage-feedback fb-warn" id="fb-task-2">⚠️ Disproportionate response that turns a kitchen reminder into red tape.</div>
+          <input type="radio" id="t-bad" name="rtc-t" />
+          <label for="t-bad" class="option-label">
+            "Author a formal 2-page procedural operational policy notice warning that kitchen misuse is subject to performance review notes."
+          </label>
+
+          <div class="stage-feedback fb-good" id="fb-t-good">
+            ✅ <strong>Proportionate Deliverable:</strong> Fast, modern channel-appropriate communication that respects employee time.
+          </div>
+          <div class="stage-feedback fb-bad" id="fb-t-bad">
+            ⚠️ <strong>Disproportionate Escalation:</strong> Escalating a dirty mug into a formal policy memo creates bureaucratic fatigue.
+          </div>
         </div>
       </div>
 
-      <!-- Step 3: Context -->
+      <!-- STAGE 3: CONTEXT & CONSTRAINTS -->
       <div class="builder-stage">
-        <h3>3. Select Context & Constraints (C)</h3>
-        <p class="stage-sub">What are the guardrails, length, and tone boundaries?</p>
-        <div class="selection-list">
-          <input type="radio" id="ctx-1" name="rtc-c" />
-          <label for="ctx-1" class="option-btn">"Keep it under 60 words, lighthearted, and highlight collective pride in our shared space."</label>
+        <div class="stage-header">
+          <span class="stage-tag">Step 3</span>
+          <h4>Define Context & Constraints (C)</h4>
+        </div>
+        <p class="stage-hint">What are the guardrails, length limits, and cultural standards?</p>
 
-          <input type="radio" id="ctx-2" name="rtc-c" />
-          <label for="ctx-2" class="option-btn">"Warn that CCTV footage will be audited and repeated offenders reported to leadership."</label>
+        <div class="options-stack">
+          <input type="radio" id="c-good" name="rtc-c" />
+          <label for="c-good" class="option-label">
+            "Constraint: Max 60 words. Tone must be warm, lighthearted, and emphasize team pride in our shared space. Do not mention surveillance, blame, or penalties."
+          </label>
 
-          <div class="stage-feedback fb-good" id="fb-ctx-1">✅ Enforces strict word limits and preserves psychological safety.</div>
-          <div class="stage-feedback fb-warn" id="fb-ctx-2">⚠️ Threat-focused constraints produce confrontational communications.</div>
+          <input type="radio" id="c-bad" name="rtc-c" />
+          <label for="c-bad" class="option-label">
+            "Constraint: Emphasize that office CCTV will be checked and repeat offenders will have their kitchen privileges revoked."
+          </label>
+
+          <div class="stage-feedback fb-good" id="fb-c-good">
+            ✅ <strong>Strict Guardrails:</strong> Explicit word limits and tone instructions prevent the LLM from hallucinating defensive or accusatory phrases.
+          </div>
+          <div class="stage-feedback fb-bad" id="fb-c-bad">
+            ⚠️ <strong>Destructive Constraints:</strong> Threat-based constraints dismantle team trust and produce hostile messages.
+          </div>
         </div>
       </div>
 
@@ -75,7 +113,7 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Master Prompt Formula: Role + Task + Context = Focused, Safe Workplace Outputs.</p>
+      <p>Master Prompt Formula: Role + Task + Context = Focused, High-Impact Leadership Output.</p>
     </div>
   </footer>
 
