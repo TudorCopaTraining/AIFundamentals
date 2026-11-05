@@ -1,21 +1,26 @@
 :root {
-  --bg-page: #f8fafc;
-  --card-bg: #ffffff;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --text-main: #0f172a;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --safe-bg: #ecfdf5;
+  --bg-page: #0f172a;          /* Deep slate background */
+  --card-bg: #1e293b;          /* Elevated surface */
+  --surface-alt: #334155;      /* Sub-panel background */
+  --primary: #38bdf8;          /* Accessible bright sky blue */
+  --primary-hover: #0ea5e9;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border: #475569;
+  --safe-bg: #064e3b;          /* Accessible dark emerald */
   --safe-border: #10b981;
-  --safe-text: #065f46;
-  --breach-bg: #fff1f2;
+  --safe-text: #a7f3d0;
+  --breach-bg: #450a0a;        /* Accessible dark crimson */
   --breach-border: #f43f5e;
-  --breach-text: #9f1239;
+  --breach-text: #fecdd3;
   --font-stack: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   background-color: var(--bg-page);
@@ -35,14 +40,14 @@ body {
   padding: 2.75rem 0 1.75rem;
   border-bottom: 1px solid var(--border);
   margin-bottom: 2rem;
-  background: #ffffff;
+  background: #0f172a;
 }
 
 .badge {
   display: inline-block;
-  background: #eff6ff;
+  background: rgba(56, 189, 248, 0.15);
   color: var(--primary);
-  border: 1px solid #bfdbfe;
+  border: 1px solid rgba(56, 189, 248, 0.4);
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.8rem;
@@ -55,6 +60,7 @@ body {
   font-size: 1.85rem;
   font-weight: 800;
   letter-spacing: -0.02em;
+  color: #ffffff;
   margin-bottom: 0.4rem;
 }
 
@@ -68,7 +74,8 @@ body {
   border: 1px solid var(--border);
   border-radius: 14px;
   padding: 2rem;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+  margin-bottom: 1.75rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
 
 .scenario-item {
@@ -85,15 +92,16 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   color: var(--primary);
-  background: #eff6ff;
-  padding: 0.2rem 0.6rem;
+  background: rgba(56, 189, 248, 0.12);
+  padding: 0.25rem 0.65rem;
   border-radius: 4px;
-  margin-bottom: 0.5rem;
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  margin-bottom: 0.6rem;
 }
 
 .desc {
   font-size: 0.98rem;
-  color: #334155;
+  color: #e2e8f0;
   margin-bottom: 1rem;
 }
 
@@ -104,9 +112,9 @@ body {
 .btn {
   display: inline-block;
   cursor: pointer;
-  background-color: #f1f5f9;
-  color: #1e293b;
-  padding: 0.6rem 1.25rem;
+  background-color: var(--surface-alt);
+  color: var(--text-main);
+  padding: 0.65rem 1.25rem;
   border-radius: 6px;
   font-size: 0.9rem;
   font-weight: 600;
@@ -118,13 +126,14 @@ body {
 }
 
 .btn:hover {
-  background-color: #e2e8f0;
+  background-color: #475569;
+  border-color: #64748b;
 }
 
 .feedback {
   display: none;
   margin-top: 1rem;
-  padding: 0.95rem 1.15rem;
+  padding: 1rem 1.25rem;
   border-radius: 8px;
   font-size: 0.92rem;
   animation: fadeIn 0.2s ease-in-out forwards;
@@ -142,7 +151,7 @@ body {
   color: var(--breach-text);
 }
 
-/* Radio selectors */
+/* Radio button activation */
 #s1-safe:checked ~ #fb-s1-safe { display: block; }
 #s1-breach:checked ~ #fb-s1-breach { display: block; }
 #s2-safe:checked ~ #fb-s2-safe { display: block; }
@@ -169,8 +178,9 @@ body {
 #s6-safe:checked + label[for="s6-safe"],
 #s6-breach:checked + label[for="s6-breach"] {
   background-color: var(--primary);
-  color: #ffffff;
+  color: #041019;
   border-color: var(--primary-hover);
+  font-weight: 700;
 }
 
 .footer {
