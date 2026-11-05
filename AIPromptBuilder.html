@@ -11,100 +11,85 @@
   <header class="header">
     <div class="container">
       <span class="badge">Activity 03</span>
-      <h1>Team Leader Prompt Architect: The RTC Framework</h1>
-      <p>Transform ineffective leadership prompts into high-precision, balanced prompts using the Role, Task, and Context model.</p>
+      <h1>Team Leader Prompt Architect: RTC Challenge</h1>
+      <p>Transform vague operational requests into high-precision, balanced prompts using the Role–Task–Context (RTC) model[cite: 13, 14].</p>
     </div>
   </header>
 
   <main class="container">
+
+    <!-- TASK OVERVIEW & INSTRUCTIONS -->
+    <section class="card" style="border-left: 5px solid #2563eb;">
+      <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #1e293b;">Task Overview & Instructions</h2>
+      <p style="font-size: 0.95rem; color: #475569; margin-bottom: 0.85rem;">
+        Unrefined prompts force AI word predictors to guess operational tone and scope, frequently generating adversarial or corporate-bloated outputs[cite: 8, 14]. Team leaders must craft structured prompts that provide clear operational direction while protecting psychological safety and team culture[cite: 2, 9, 13].
+      </p>
+      <div class="instructions-box">
+        <strong>What you must do:</strong>
+        <ol>
+          <li>Read the workplace problem statement below[cite: 14].</li>
+          <li>Review the <strong>Target RTC Requirements</strong> (Role, Task, and Context parameters)[cite: 13, 14].</li>
+          <li>Type your complete prompt into the input workspace[cite: 14].</li>
+          <li>Click <strong>Evaluate My Prompt</strong> to check your coverage against the RTC criteria[cite: 13, 14].</li>
+          <li>Once you make an attempt, the <strong>Reveal Model Prompt</strong> button will activate to compare your wording against the exemplar[cite: 14].</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- WORKPLACE SCENARIO CARD -->
     <section class="card">
-
       <div class="lead-challenge">
-        <h3>The Leadership Challenge</h3>
-        <p>A manager entered this unrefined prompt: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> The AI generated a hostile, four-paragraph disciplinary threat that upset the entire team. As an operational Team Leader, re-architect this prompt using the <strong>RTC Formula</strong> to achieve compliance without damaging psychological safety.</p>
+        <h3>The Operational Bottleneck</h3>
+        <p>A manager entered this unrefined prompt: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em>[cite: 14] The AI produced an aggressive, four-paragraph disciplinary warning that damaged team morale[cite: 14]. Your mission is to write a prompt that achieves operational cleanliness without creating friction[cite: 13, 14].</p>
       </div>
 
-      <!-- STAGE 1: ROLE -->
-      <div class="builder-stage">
-        <div class="stage-header">
-          <span class="stage-tag">Step 1</span>
-          <h4>Define the Role (R)</h4>
+      <!-- CRITERIA GUIDELINES -->
+      <div class="criteria-grid">
+        <div class="crit-card">
+          <span class="crit-badge">R</span>
+          <h4>Role[cite: 13, 14]</h4>
+          <p>Must direct the AI to act as an <strong>approachable team leader</strong> or <strong>supervisor</strong>[cite: 13, 14].</p>
         </div>
-        <p class="stage-hint">Who is the AI pretending to be? (Sets emotional intelligence and team relationship baseline).</p>
-
-        <div class="options-stack">
-          <input type="radio" id="r-bad" name="rtc-r" />
-          <label for="r-bad" class="option-label">
-            "Act as a strict disciplinary human resources compliance officer conducting an inquiry into workplace policy infractions..."
-          </label>
-
-          <input type="radio" id="r-good" name="rtc-r" />
-          <label for="r-good" class="option-label">
-            "Act as an approachable, supportive team leader who fosters high psychological safety and shared accountability in an operations unit..."
-          </label>
-
-          <div class="stage-feedback fb-bad" id="fb-r-bad">
-            ⚠️ <strong>Wrong Persona:</strong> This persona causes the LLM to default to punitive, adversarial legalisms that undermine team morale.
-          </div>
-          <div class="stage-feedback fb-good" id="fb-r-good">
-            ✅ <strong>Ideal Persona:</strong> Establishes a balanced, empathetic peer-level leadership baseline that encourages shared ownership.
-          </div>
+        <div class="crit-card">
+          <span class="crit-badge">T</span>
+          <h4>Task[cite: 13, 14]</h4>
+          <p>Must direct the AI to draft a <strong>short team channel update/reminder</strong> (Slack/Teams) about kitchen cleanliness[cite: 13, 14].</p>
+        </div>
+        <div class="crit-card">
+          <span class="crit-badge">C</span>
+          <h4>Context & Constraints[cite: 13, 14]</h4>
+          <p>Must enforce a <strong>friendly/warm tone</strong> and a <strong>word or sentence limit</strong> (e.g., max 60 words or 3 sentences)[cite: 13, 14].</p>
         </div>
       </div>
 
-      <!-- STAGE 2: TASK -->
-      <div class="builder-stage">
-        <div class="stage-header">
-          <span class="stage-tag">Step 2</span>
-          <h4>Define the Task (T)</h4>
+      <!-- INTERACTIVE PROMPT BUILDER WORKSPACE -->
+      <div class="workspace-area">
+        <label for="user-prompt-input" class="input-label">Your Prompt Composition:</label>
+        <textarea 
+          id="user-prompt-input" 
+          rows="5" 
+          placeholder="Example: Act as an approachable team leader. Draft a 3-sentence Slack message reminding the team to rinse and load their coffee mugs into the dishwasher. Keep it friendly, positive, and under 60 words."
+        ></textarea>
+
+        <div class="button-row">
+          <button id="btn-submit" class="btn btn-primary" onclick="evaluatePrompt()">Evaluate My Prompt</button>
+          <button id="btn-reveal" class="btn btn-secondary" onclick="revealModelPrompt()" disabled>Reveal Model Prompt</button>
         </div>
-        <p class="stage-hint">What exact asset and channel are you delivering?</p>
 
-        <div class="options-stack">
-          <input type="radio" id="t-good" name="rtc-t" />
-          <label for="t-good" class="option-label">
-            "Draft a concise 3-sentence team channel update (for Slack/Teams) reminding the team to rinse and load their mugs into the dishwasher."
-          </label>
-
-          <input type="radio" id="t-bad" name="rtc-t" />
-          <label for="t-bad" class="option-label">
-            "Author a formal 2-page procedural operational policy notice warning that kitchen misuse is subject to performance review notes."
-          </label>
-
-          <div class="stage-feedback fb-good" id="fb-t-good">
-            ✅ <strong>Proportionate Deliverable:</strong> Fast, modern channel-appropriate communication that respects employee time.
-          </div>
-          <div class="stage-feedback fb-bad" id="fb-t-bad">
-            ⚠️ <strong>Disproportionate Escalation:</strong> Escalating a dirty mug into a formal policy memo creates bureaucratic fatigue.
-          </div>
+        <!-- EVALUATION RESULTS -->
+        <div id="evaluation-card" class="eval-result" style="display: none;">
+          <h4 id="eval-title">Evaluation Result</h4>
+          <p id="eval-desc"></p>
+          <ul id="eval-checklist" class="eval-list"></ul>
         </div>
-      </div>
 
-      <!-- STAGE 3: CONTEXT & CONSTRAINTS -->
-      <div class="builder-stage">
-        <div class="stage-header">
-          <span class="stage-tag">Step 3</span>
-          <h4>Define Context & Constraints (C)</h4>
-        </div>
-        <p class="stage-hint">What are the guardrails, length limits, and cultural standards?</p>
-
-        <div class="options-stack">
-          <input type="radio" id="c-good" name="rtc-c" />
-          <label for="c-good" class="option-label">
-            "Constraint: Max 60 words. Tone must be warm, lighthearted, and emphasize team pride in our shared space. Do not mention surveillance, blame, or penalties."
-          </label>
-
-          <input type="radio" id="c-bad" name="rtc-c" />
-          <label for="c-bad" class="option-label">
-            "Constraint: Emphasize that office CCTV will be checked and repeat offenders will have their kitchen privileges revoked."
-          </label>
-
-          <div class="stage-feedback fb-good" id="fb-c-good">
-            ✅ <strong>Strict Guardrails:</strong> Explicit word limits and tone instructions prevent the LLM from hallucinating defensive or accusatory phrases.
-          </div>
-          <div class="stage-feedback fb-bad" id="fb-c-bad">
-            ⚠️ <strong>Destructive Constraints:</strong> Threat-based constraints dismantle team trust and produce hostile messages.
-          </div>
+        <!-- MODEL ANSWER ACCORDION -->
+        <div id="model-answer-card" class="model-box" style="display: none;">
+          <h4>Model Benchmark Prompt</h4>
+          <blockquote class="model-quote">
+            "Act as an approachable, supportive operational team leader[cite: 13, 14]. Draft a concise 3-sentence team channel reminder (Slack/Teams) asking the team to rinse and load their mugs into the dishwasher[cite: 13, 14]. Keep the tone warm, lighthearted, and focused on collective pride in our shared space, with a maximum length of 60 words[cite: 13, 14]."
+          </blockquote>
+          <p class="model-note">Notice how explicit boundaries prevent the AI from generating defensive rhetoric or formal reprimands[cite: 8, 14].</p>
         </div>
       </div>
 
@@ -113,9 +98,4 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Master Prompt Formula: Role + Task + Context = Focused, High-Impact Leadership Output.</p>
-    </div>
-  </footer>
-
-</body>
-</html>
+      <p>Master Prompt Formula: Role + Task +
