@@ -1,127 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Task 3: RTC Prompt Builder</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --border: #334155;
-      --text: #f8fafc;
-      --accent: #38bdf8;
-    }
-    body {
-      font-family: system-ui, -apple-system, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      display: flex;
-      justify-content: center;
-      padding: 2rem 1rem;
-      margin: 0;
-    }
-    .container {
-      max-width: 760px;
-      width: 100%;
-    }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-    }
-    .step-box {
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1rem;
-      margin-bottom: 1rem;
-      background: rgba(15, 23, 42, 0.4);
-    }
-    .step-title {
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-    label {
-      display: block;
-      padding: 0.6rem 0.8rem;
-      background: #243044;
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      cursor: pointer;
-      margin-bottom: 0.5rem;
-      font-size: 0.95rem;
-    }
-    input[type="radio"] {
-      display: none;
-    }
-    input[type="radio"]:checked + label {
-      border-color: var(--accent);
-      background: #0284c7;
-      color: #fff;
-    }
-    .output-box {
-      margin-top: 1.5rem;
-      padding: 1rem;
-      background: #000;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      font-family: monospace;
-      color: #38bdf8;
-    }
-    .hint {
-      display: none;
-      font-size: 0.85rem;
-      color: #cbd5e1;
-      margin-top: 0.4rem;
-    }
-    #r2:checked ~ .hint-r2,
-    #t1:checked ~ .hint-t1,
-    #c1:checked ~ .hint-c1 {
-      display: block;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Task 3: AI Prompt Builder</title>
+  <link rel="stylesheet" href="AIPromptBuilder.css" />
 </head>
 <body>
-  <div class="container">
-    <div class="card">
-      <h2>Activity 3: The RTC Prompt Architect</h2>
-      <p>Fix the poor prompt: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> Select the optimal <strong>Role</strong>, <strong>Task</strong>, and <strong>Context</strong> components.</p>
+
+  <header class="header">
+    <div class="container">
+      <span class="badge">Activity 03</span>
+      <h1>The Role–Task–Context (RTC) Prompt Builder</h1>
+      <p>Transform ineffective prompts by selecting the ideal components under the RTC prompting framework.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="problem-box">
+        <strong>The Problem:</strong> A manager entered: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> The result was a punitive, 4-paragraph diatribe that damaged team morale.
+      </div>
 
       <!-- Step 1: Role -->
-      <div class="step-box">
-        <div class="step-title">Step 1: Role (Who is the AI?)</div>
-        <input type="radio" name="role" id="r1">
-        <label for="r1">"Act as a formal disciplinary HR auditor..."</label>
+      <div class="builder-stage">
+        <h3>1. Select the Role (R)</h3>
+        <p class="stage-sub">Who is the AI pretending to be?</p>
+        <div class="selection-list">
+          <input type="radio" id="role-1" name="rtc-r" />
+          <label for="role-1" class="option-btn">"Act as a strict disciplinary human resources investigator..."</label>
 
-        <input type="radio" name="role" id="r2">
-        <label for="r2">"Act as an approachable, supportive team leader..."</label>
-        <div class="hint hint-r2">✅ Role calibrated: Establishes a collegial, collaborative posture.</div>
+          <input type="radio" id="role-2" name="rtc-r" />
+          <label for="role-2" class="option-btn">"Act as an approachable, supportive team leader in an agile workplace..."</label>
+
+          <div class="stage-feedback fb-warn" id="fb-role-1">⚠️ This persona will cause the model to write adversarial, punitive copy.</div>
+          <div class="stage-feedback fb-good" id="fb-role-2">✅ Excellent. Sets an empathetic, peer-level leadership baseline.</div>
+        </div>
       </div>
 
       <!-- Step 2: Task -->
-      <div class="step-box">
-        <div class="step-title">Step 2: Task (What deliverable?)</div>
-        <input type="radio" name="task" id="t1">
-        <label for="t1">"Draft a short, lighthearted 3-sentence reminder message..."</label>
+      <div class="builder-stage">
+        <h3>2. Select the Task (T)</h3>
+        <p class="stage-sub">What exact deliverable do you need built?</p>
+        <div class="selection-list">
+          <input type="radio" id="task-1" name="rtc-t" />
+          <label for="task-1" class="option-btn">"Draft a concise 3-sentence team channel reminder about kitchen hygiene."</label>
 
-        <input type="radio" name="task" id="t2">
-        <label for="t2">"Write a legally enforceable kitchen compliance memo..."</label>
-        <div class="hint hint-t1">✅ Task calibrated: Right-sizes the message scope for internal chat.</div>
+          <input type="radio" id="task-2" name="rtc-t" />
+          <label for="task-2" class="option-btn">"Write a formal corporate compliance warning regarding company property misuse."</label>
+
+          <div class="stage-feedback fb-good" id="fb-task-1">✅ Concise, clear deliverable matched to daily communication channels.</div>
+          <div class="stage-feedback fb-warn" id="fb-task-2">⚠️ Disproportionate response that turns a kitchen reminder into red tape.</div>
+        </div>
       </div>
 
       <!-- Step 3: Context -->
-      <div class="step-box">
-        <div class="step-title">Step 3: Context (Constraints & Tone)</div>
-        <input type="radio" name="ctx" id="c1">
-        <label for="c1">"Tone is positive and polite, under 50 words, emphasizing team pride."</label>
+      <div class="builder-stage">
+        <h3>3. Select Context & Constraints (C)</h3>
+        <p class="stage-sub">What are the guardrails, length, and tone boundaries?</p>
+        <div class="selection-list">
+          <input type="radio" id="ctx-1" name="rtc-c" />
+          <label for="ctx-1" class="option-btn">"Keep it under 60 words, lighthearted, and highlight collective pride in our shared space."</label>
 
-        <input type="radio" name="ctx" id="c2">
-        <label for="c2">"Threaten disciplinary escalation and shift deductions for repeat offenders."</label>
-        <div class="hint hint-c1">✅ Context calibrated: Protects team morale and culture.</div>
+          <input type="radio" id="ctx-2" name="rtc-c" />
+          <label for="ctx-2" class="option-btn">"Warn that CCTV footage will be audited and repeated offenders reported to leadership."</label>
+
+          <div class="stage-feedback fb-good" id="fb-ctx-1">✅ Enforces strict word limits and preserves psychological safety.</div>
+          <div class="stage-feedback fb-warn" id="fb-ctx-2">⚠️ Threat-focused constraints produce confrontational communications.</div>
+        </div>
       </div>
+
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Master Prompt Formula: Role + Task + Context = Focused, Safe Workplace Outputs.</p>
     </div>
-  </div>
+  </footer>
+
 </body>
 </html>
