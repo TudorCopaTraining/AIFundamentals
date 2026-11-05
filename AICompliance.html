@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2: AI Compliance Gatekeeper</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --border: #334155;
+      --text: #f8fafc;
+      --safe: #10b981;
+      --breach: #ef4444;
+    }
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 2rem 1rem;
+      margin: 0;
+    }
+    .container {
+      max-width: 720px;
+      width: 100%;
+    }
+    .item {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .buttons {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    input[type="radio"] {
+      display: none;
+    }
+    .btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      border: 1px solid var(--border);
+    }
+    .feedback {
+      display: none;
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+    /* Item 1 Selectors */
+    #q1-safe:checked ~ .buttons label[for="q1-safe"] { background: var(--safe); color: #000; }
+    #q1-breach:checked ~ .buttons label[for="q1-breach"] { background: var(--breach); }
+    #q1-safe:checked ~ #fb1-safe { display: block; background: rgba(16, 185, 129, 0.2); }
+    #q1-breach:checked ~ #fb1-breach { display: block; background: rgba(239, 68, 68, 0.2); }
+
+    /* Item 2 Selectors */
+    #q2-safe:checked ~ .buttons label[for="q2-safe"] { background: var(--safe); color: #000; }
+    #q2-breach:checked ~ .buttons label[for="q2-breach"] { background: var(--breach); }
+    #q2-safe:checked ~ #fb2-safe { display: block; background: rgba(239, 68, 68, 0.2); }
+    #q2-breach:checked ~ #fb2-breach { display: block; background: rgba(16, 185, 129, 0.2); }
+
+    /* Item 3 Selectors */
+    #q3-safe:checked ~ .buttons label[for="q3-safe"] { background: var(--safe); color: #000; }
+    #q3-breach:checked ~ .buttons label[for="q3-breach"] { background: var(--breach); }
+    #q3-safe:checked ~ #fb3-safe { display: block; background: rgba(16, 185, 129, 0.2); }
+    #q3-breach:checked ~ #fb3-breach { display: block; background: rgba(239, 68, 68, 0.2); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Activity 2: Safe or Data Breach?</h2>
+    <p>Decide whether each team action adheres to data governance or causes a breach.</p>
+
+    <!-- Scenario 1 -->
+    <div class="item">
+      <input type="radio" name="q1" id="q1-safe">
+      <input type="radio" name="q1" id="q1-breach">
+      <p><strong>1.</strong> Pasting 10 generic, anonymized customer complaints (e.g., <em>"Delivery arrived damaged"</em>) into ChatGPT to identify recurring themes.</p>
+      <div class="buttons">
+        <label for="q1-safe" class="btn">Safe</label>
+        <label for="q1-breach" class="btn">Data Breach</label>
+      </div>
+      <div id="fb1-safe" class="feedback">✅ <strong>Correct:</strong> Anonymized text with no personal identifiers (PII) is safe for thematic analysis.</div>
+      <div id="fb1-breach" class="feedback">❌ <strong>Incorrect:</strong> Because names, addresses, and tracking codes were removed, this is not a compliance breach.</div>
+    </div>
+
+    <!-- Scenario 2 -->
+    <div class="item">
+      <input type="radio" name="q2" id="q2-safe">
+      <input type="radio" name="q2" id="q2-breach">
+      <p><strong>2.</strong> Uploading the department's full Q3 internal budget spreadsheet to generate variance summaries.</p>
+      <div class="buttons">
+        <label for="q2-safe" class="btn">Safe</label>
+        <label for="q2-breach" class="btn">Data Breach</label>
+      </div>
+      <div id="fb2-safe" class="feedback">❌ <strong>Critical Violation:</strong> Internal financial records uploaded to public web LLMs are stored externally and risk leakage.</div>
+      <div id="fb2-breach" class="feedback">✅ <strong>Correct:</strong> Major breach! Never upload proprietary financials or trade secrets to public AI models.</div>
+    </div>
+
+    <!-- Scenario 3 -->
+    <div class="item">
+      <input type="radio" name="q3" id="q3-safe">
+      <input type="radio" name="q3" id="q3-breach">
+      <p><strong>3.</strong> Submitting a drafted internal handover announcement that contains no personnel names, client details, or system passwords to check grammar.</p>
+      <div class="buttons">
+        <label for="q3-safe" class="btn">Safe</label>
+        <label for="q3-breach" class="btn">Data Breach</label>
+      </div>
+      <div id="fb3-safe" class="feedback">✅ <strong>Correct:</strong> Using an LLM to check grammar and tone on non-sensitive drafts is an approved operational use case.</div>
+      <div id="fb3-breach" class="feedback">❌ <strong>Incorrect:</strong> De-identified communication copy does not expose confidential company data.</div>
+    </div>
+  </div>
+</body>
+</html>
