@@ -10,37 +10,121 @@
 
   <header class="header">
     <div class="container">
-      <span class="badge">Activity 03</span>
-      <h1>Team Leader Prompt Architect: RTC Challenge</h1>
-      <p>Transform vague operational requests into high-precision, balanced prompts using the Role–Task–Context (RTC) model.</p>
+      <span class="badge">Activity 03 • 15-Minute Leadership Lab</span>
+      <h1>Team Leader Prompt Architect: RTC Masterclass</h1>
+      <p>Master the Role–Task–Context (RTC) model: diagnose flawed workplace prompts and build calibrated, balanced prompts that drive team compliance without destroying trust.</p>
     </div>
   </header>
 
   <main class="container">
 
-    <!-- TASK OVERVIEW & INSTRUCTIONS -->
-    <section class="card" style="border-left: 5px solid #2563eb;">
-      <h2 style="font-size: 1.25rem; margin-bottom: 0.5rem; color: #1e293b;">Task Overview & Instructions</h2>
-      <p style="font-size: 0.95rem; color: #475569; margin-bottom: 0.85rem;">
-        Unrefined prompts force AI word predictors to guess operational tone and scope, frequently generating adversarial or corporate-bloated outputs. Team leaders must craft structured prompts that provide clear operational direction while protecting psychological safety and team culture.
-      </p>
-      <div class="instructions-box">
-        <strong>What you must do:</strong>
-        <ol>
-          <li>Read the workplace problem statement below.</li>
-          <li>Review the <strong>Target RTC Requirements</strong> (Role, Task, and Context parameters).</li>
-          <li>Type your complete prompt into the input workspace.</li>
-          <li>Click <strong>Evaluate My Prompt</strong> to check your coverage against the RTC criteria.</li>
-          <li>Once you make an attempt, the <strong>Reveal Model Prompt</strong> button will activate to compare your wording against the exemplar.</li>
-        </ol>
+    <!-- TASK OVERVIEW, 15-MIN TIMETABLE & TIMER -->
+    <section class="card" style="border-left: 5px solid var(--primary);">
+      <div class="overview-header">
+        <div>
+          <h2>Lab Overview & Operational Flow</h2>
+          <p class="subtitle">
+            Unrefined prompts force AI prediction models to guess operational scope and tone, triggering defensive, aggressive, or corporate-bloated outputs. Team leaders must know how to spot prompt flaws and construct structured prompts that protect psychological safety while streamlining workflows.
+          </p>
+        </div>
+        <!-- 15-Minute Countdown Timer -->
+        <div class="timer-box">
+          <span class="timer-label">Lab Session Timer</span>
+          <div id="timer-display" class="timer-clock">15:00</div>
+          <button id="timer-btn" class="timer-toggle" onclick="toggleTimer()">Start Timer</button>
+        </div>
+      </div>
+
+      <div class="timetable-grid">
+        <div class="time-stage">
+          <span class="time-marker">00:00 – 05:00</span>
+          <strong>Phase 1: Diagnostic Drill</strong>
+          <p>Analyze 4 real workplace prompts. Classify them as Effective RTC or Flawed, and review the failure mechanisms.</p>
+        </div>
+        <div class="time-stage">
+          <span class="time-marker">05:00 – 11:00</span>
+          <strong>Phase 2: Hands-on Prompt Build</strong>
+          <p>Write an operational prompt to resolve a team friction issue using the Role, Task, and Context framework.</p>
+        </div>
+        <div class="time-stage">
+          <span class="time-marker">11:00 – 15:00</span>
+          <strong>Phase 3: Audit & Peer Debrief</strong>
+          <p>Run prompt evaluation, reveal the exemplar benchmark, and debrief on team culture impact.</p>
+        </div>
       </div>
     </section>
 
-    <!-- WORKPLACE SCENARIO CARD -->
+    <!-- PHASE 1: GOOD VS BAD PROMPT DIAGNOSTIC DRILL -->
     <section class="card">
+      <div class="section-title-row">
+        <span class="phase-pill">Phase 1</span>
+        <h2>Workplace Prompt Diagnostic: Good vs. Bad</h2>
+      </div>
+      <p class="section-desc">Before writing your own prompt, evaluate these 4 common prompts written by managers. Determine whether each prompt is an <strong>Effective RTC Prompt</strong> or a <strong>Flawed Prompt</strong>, and inspect the operational consequence.</p>
+
+      <!-- Drill 1 -->
+      <div class="drill-item" id="drill-card-1">
+        <div class="drill-header">
+          <span class="drill-tag">Case A: Handover Update</span>
+          <p class="drill-prompt-text">"Write a handover note for the night shift."</p>
+        </div>
+        <div class="drill-actions">
+          <button class="btn-choice" onclick="checkDrill(1, false)">Effective RTC Prompt</button>
+          <button class="btn-choice" onclick="checkDrill(1, true)">Flawed Prompt</button>
+        </div>
+        <div id="drill-fb-1" class="drill-feedback" style="display: none;"></div>
+      </div>
+
+      <!-- Drill 2 -->
+      <div class="drill-item" id="drill-card-2">
+        <div class="drill-header">
+          <span class="drill-tag">Case B: Shift Lateness Notice</span>
+          <p class="drill-prompt-text">"Write an email to a team member who was 20 minutes late twice this week telling them this is unacceptable, threatens their job, and will lead to an immediate disciplinary hearing."</p>
+        </div>
+        <div class="drill-actions">
+          <button class="btn-choice" onclick="checkDrill(2, false)">Effective RTC Prompt</button>
+          <button class="btn-choice" onclick="checkDrill(2, true)">Flawed Prompt</button>
+        </div>
+        <div id="drill-fb-2" class="drill-feedback" style="display: none;"></div>
+      </div>
+
+      <!-- Drill 3 -->
+      <div class="drill-item" id="drill-card-3">
+        <div class="drill-header">
+          <span class="drill-tag">Case C: Process Change Briefing</span>
+          <p class="drill-prompt-text">"Act as an experienced operational team supervisor. Draft a 3-bullet point morning huddle script explaining our switch from paper defect logs to the Bay 2 tablet app. Keep the tone encouraging, emphasize that 5-minute practice sessions are scheduled during shift change, and limit the response to 90 words."</p>
+        </div>
+        <div class="drill-actions">
+          <button class="btn-choice" onclick="checkDrill(3, true)">Effective RTC Prompt</button>
+          <button class="btn-choice" onclick="checkDrill(3, false)">Flawed Prompt</button>
+        </div>
+        <div id="drill-fb-3" class="drill-feedback" style="display: none;"></div>
+      </div>
+
+      <!-- Drill 4 -->
+      <div class="drill-item" id="drill-card-4">
+        <div class="drill-header">
+          <span class="drill-tag">Case D: Client Meeting Summary</span>
+          <p class="drill-prompt-text">"Summarize this client dispute transcript, make our logistics subcontractor look completely at fault so we don't have to refund the customer, and make it sound extremely legalistic."</p>
+        </div>
+        <div class="drill-actions">
+          <button class="btn-choice" onclick="checkDrill(4, false)">Effective RTC Prompt</button>
+          <button class="btn-choice" onclick="checkDrill(4, true)">Flawed Prompt</button>
+        </div>
+        <div id="drill-fb-4" class="drill-feedback" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- PHASE 2: ACTIVE PROMPT CONSTRUCTION WORKSPACE -->
+    <section class="card">
+      <div class="section-title-row">
+        <span class="phase-pill">Phase 2</span>
+        <h2>Active Challenge: Build the Calibrated Leadership Prompt</h2>
+      </div>
+
       <div class="lead-challenge">
-        <h3>The Operational Bottleneck</h3>
-        <p>A manager entered this unrefined prompt: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> The AI produced an aggressive, four-paragraph disciplinary warning that damaged team morale. Your mission is to write a prompt that achieves operational cleanliness without creating friction.</p>
+        <h3>The Operational Dilemma</h3>
+        <p>A manager entered this lazy prompt: <em>"Write a message telling my team to stop leaving dirty coffee mugs in the sink."</em> The AI generated a hostile, four-paragraph disciplinary threat citing surveillance and misconduct, which outraged the team. Your mission is to re-architect this prompt using the <strong>RTC Formula</strong> to drive compliance while maintaining a positive, high-trust culture.</p>
       </div>
 
       <!-- CRITERIA GUIDELINES -->
@@ -48,27 +132,27 @@
         <div class="crit-card">
           <span class="crit-badge">R</span>
           <h4>Role</h4>
-          <p>Must direct the AI to act as an <strong>approachable team leader</strong> or <strong>supervisor</strong>.</p>
+          <p>Instruct the AI to adopt the persona of an <strong>approachable, supportive team leader or supervisor</strong>.</p>
         </div>
         <div class="crit-card">
           <span class="crit-badge">T</span>
           <h4>Task</h4>
-          <p>Must direct the AI to draft a <strong>short team channel update/reminder</strong> (Slack/Teams) about kitchen cleanliness.</p>
+          <p>Specify the exact deliverable: a <strong>brief team channel reminder (Slack/Teams)</strong> about rinsing and loading mugs into the dishwasher.</p>
         </div>
         <div class="crit-card">
           <span class="crit-badge">C</span>
           <h4>Context & Constraints</h4>
-          <p>Must enforce a <strong>friendly/warm tone</strong> and a <strong>word or sentence limit</strong> (e.g., max 60 words or 3 sentences).</p>
+          <p>Enforce guardrails: a <strong>warm, lighthearted tone</strong>, a <strong>word/sentence limit</strong> (e.g. under 60 words or 3 sentences), and <strong>no threats or blame</strong>.</p>
         </div>
       </div>
 
-      <!-- INTERACTIVE PROMPT BUILDER WORKSPACE -->
+      <!-- INPUT WORKSPACE -->
       <div class="workspace-area">
-        <label for="user-prompt-input" class="input-label">Your Prompt Composition:</label>
+        <label for="user-prompt-input" class="input-label">Your Prompt Engineering Canvas:</label>
         <textarea 
           id="user-prompt-input" 
           rows="5" 
-          placeholder="Example: Act as an approachable team leader. Draft a 3-sentence Slack message reminding the team to rinse and load their coffee mugs into the dishwasher. Keep it friendly, positive, and under 60 words."
+          placeholder="Type your structured RTC prompt here... (e.g., Act as an approachable team leader. Draft a 3-sentence Slack reminder asking the team to rinse and load their coffee mugs into the dishwasher. Keep the tone warm, positive, and under 60 words.)"
         ></textarea>
 
         <div class="button-row">
@@ -83,7 +167,7 @@
           <ul id="eval-checklist" class="eval-list"></ul>
         </div>
 
-        <!-- MODEL ANSWER ACCORDION -->
+        <!-- MODEL BENCHMARK ACCORDION -->
         <div id="model-answer-card" class="model-box" style="display: none;">
           <h4>Model Benchmark Prompt</h4>
           <blockquote class="model-quote">
@@ -98,11 +182,97 @@
 
   <footer class="footer">
     <div class="container">
-      <p>Master Prompt Formula: Role + Task + Context = Focused, High-Impact Leadership Output.</p>
+      <p>Human-in-the-Loop Principle: As a leader, you are personally accountable for any AI-assisted output and the workplace culture it creates.</p>
     </div>
   </footer>
 
   <script>
+    // 15-Minute Countdown Timer Logic
+    let timeLeft = 15 * 60;
+    let timerRunning = false;
+    let timerInterval = null;
+
+    function toggleTimer() {
+      const btn = document.getElementById('timer-btn');
+      if (timerRunning) {
+        clearInterval(timerInterval);
+        timerRunning = false;
+        btn.textContent = 'Resume Timer';
+        btn.classList.remove('running');
+      } else {
+        timerInterval = setInterval(() => {
+          if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            timerRunning = false;
+            document.getElementById('timer-display').textContent = '00:00';
+            btn.textContent = 'Time Up!';
+            return;
+          }
+          timeLeft--;
+          const m = String(Math.floor(timeLeft / 60)).padStart(2, '0');
+          const s = String(timeLeft % 60).padStart(2, '0');
+          document.getElementById('timer-display').textContent = `${m}:${s}`;
+        }, 1000);
+        timerRunning = true;
+        btn.textContent = 'Pause Timer';
+        btn.classList.add('running');
+      }
+    }
+
+    // Phase 1: Good vs Bad Drill Logic
+    const drillData = {
+      1: {
+        isEffective: false,
+        defect: "Missing Role, Context, and Constraints.",
+        explanation: "This prompt is severely under-specified. The AI does not know which shift, what metrics matter, what machines to reference, or what format to use. It will hallucinate generic operational notes that add zero value.",
+        takeaway: "Always provide key operational parameters: shift name, key metrics, and bullet structure."
+      },
+      2: {
+        isEffective: false,
+        defect: "Adversarial Persona & Premature Disciplinary Escalation.",
+        explanation: "This prompt primes the AI to produce an aggressive, legally hazardous reprimand. In team leadership, repeated lateness requires an exploratory 1-to-1 return-to-work discussion first. Putting threats in writing destroys trust and creates grievance risk.",
+        takeaway: "Never use AI to draft punitive threats. Prime the model to be objective, factual, and invite a supportive 1-to-1 conversation."
+      },
+      3: {
+        isEffective: true,
+        defect: "None — Exemplary RTC Execution.",
+        explanation: "Role is defined ('experienced operational supervisor'), Task is clear ('3-bullet point morning huddle script'), and Context is tightly guarded ('encouraging tone', '5-minute practice sessions', 'under 90 words').",
+        takeaway: "Clear boundaries eliminate fluff and produce actionable leadership deliverables on the first attempt."
+      },
+      4: {
+        isEffective: false,
+        defect: "Algorithmic Bias, Ethical Breach & Hallucination Prompting.",
+        explanation: "Instructing the AI to shift blame and sound legalistic breaches ethical leadership standards. The AI will fabricate false certainty and aggressive legal jargon that damages commercial partnerships.",
+        takeaway: "Team leaders must uphold truthfulness and compliance. Prompts must request objective, balanced chronologies, not biased spin."
+      }
+    };
+
+    const answeredDrills = new Set();
+
+    function checkDrill(drillId, userSaidEffective) {
+      if (answeredDrills.has(drillId)) return;
+      answeredDrills.add(drillId);
+
+      const data = drillData[drillId];
+      const isCorrect = (userSaidEffective === data.isEffective);
+      const card = document.getElementById(`drill-card-${drillId}`);
+      const fb = document.getElementById(`drill-fb-${drillId}`);
+
+      card.classList.add(isCorrect ? 'drill-passed' : 'drill-failed');
+      fb.style.display = 'block';
+      fb.className = `drill-feedback ${isCorrect ? 'fb-good' : 'fb-bad'}`;
+
+      fb.innerHTML = `
+        <div class="drill-fb-header">
+          <strong>${isCorrect ? '✅ Accurate Diagnosis!' : '❌ Incorrect Assessment.'}</strong>
+          <span>${data.isEffective ? 'Effective RTC Prompt' : 'Flawed Prompt: ' + data.defect}</span>
+        </div>
+        <p class="drill-fb-body">${data.explanation}</p>
+        <p class="drill-fb-takeaway"><strong>Leadership Lesson:</strong> ${data.takeaway}</p>
+      `;
+    }
+
+    // Phase 2: Active Prompt Evaluator Logic
     let hasAttempted = false;
 
     function evaluatePrompt() {
@@ -113,7 +283,7 @@
       const evalList = document.getElementById("eval-checklist");
       const revealBtn = document.getElementById("btn-reveal");
 
-      if (input.length < 20) {
+      if (input.length < 25) {
         alert("Please write a complete prompt before submitting for evaluation.");
         return;
       }
@@ -123,10 +293,10 @@
       revealBtn.disabled = false;
       revealBtn.classList.add("btn-active");
 
-      // Evaluation criteria with margin for error
-      const roleMatches = ["role", "act as", "leader", "supervisor", "manager", "lead", "person", "tone of"];
-      const taskMatches = ["task", "draft", "write", "message", "reminder", "post", "slack", "teams", "channel", "email", "update"];
-      const contextMatches = ["context", "friendly", "lighthearted", "warm", "words", "limit", "sentences", "constraint", "respect", "dishwasher", "sink", "mugs", "clean"];
+      // Evaluation keyword matching with built-in tolerance
+      const roleMatches = ["role", "act as", "leader", "supervisor", "manager", "lead", "person", "tone of", "approachable", "supportive"];
+      const taskMatches = ["task", "draft", "write", "message", "reminder", "post", "slack", "teams", "channel", "email", "update", "script"];
+      const contextMatches = ["context", "friendly", "lighthearted", "warm", "words", "limit", "sentences", "constraint", "respect", "dishwasher", "sink", "mugs", "clean", "positive", "max"];
 
       const hasRole = roleMatches.some(word => input.includes(word));
       const hasTask = taskMatches.some(word => input.includes(word));
@@ -140,15 +310,21 @@
       evalList.innerHTML = "";
       
       const roleLi = document.createElement("li");
-      roleLi.innerHTML = hasRole ? "✅ <strong>Role (R):</strong> Persona or leadership perspective established." : "❌ <strong>Role (R):</strong> Missing an explicit leadership role or persona instruction.";
+      roleLi.innerHTML = hasRole 
+        ? "✅ <strong>Role (R):</strong> Established an approachable, supportive leadership perspective." 
+        : "❌ <strong>Role (R):</strong> Missing an explicit leadership role (e.g. 'Act as an approachable team leader').";
       evalList.appendChild(roleLi);
 
       const taskLi = document.createElement("li");
-      taskLi.innerHTML = hasTask ? "✅ <strong>Task (T):</strong> Concrete communication deliverable specified." : "❌ <strong>Task (T):</strong> Unclear deliverable (specify a message, reminder, or channel update).";
+      taskLi.innerHTML = hasTask 
+        ? "✅ <strong>Task (T):</strong> Concrete communication deliverable specified (channel reminder / update)." 
+        : "❌ <strong>Task (T):</strong> Unclear deliverable (specify a Slack/Teams message or concise channel reminder).";
       evalList.appendChild(taskLi);
 
       const contextLi = document.createElement("li");
-      contextLi.innerHTML = hasContext ? "✅ <strong>Context (C):</strong> Tone, operational boundaries, or constraints included." : "❌ <strong>Context (C):</strong> Missing guardrails (include word limits or friendly tone instructions).";
+      contextLi.innerHTML = hasContext 
+        ? "✅ <strong>Context & Constraints (C):</strong> Clear tone rules and length limits provided to avoid hostility." 
+        : "❌ <strong>Context & Constraints (C):</strong> Missing guardrails (specify a friendly tone and a strict word/sentence limit).";
       evalList.appendChild(contextLi);
 
       evalCard.style.display = "block";
@@ -156,15 +332,15 @@
       if (score === 3) {
         evalCard.className = "eval-result eval-pass";
         evalTitle.textContent = "Outstanding Prompt Architecture! (Score: 3/3)";
-        evalDesc.textContent = "Your prompt successfully applies the RTC framework with sufficient precision to prevent LLM hallucination and defensiveness.";
+        evalDesc.textContent = "Your prompt successfully applies the RTC framework with sufficient precision to prevent defensive rhetoric and bureaucratic bloat.";
       } else if (score === 2) {
         evalCard.className = "eval-result eval-warn";
-        evalTitle.textContent = "Close Attempt — Minor Refinement Needed (Score: 2/3)";
-        evalDesc.textContent = "You have captured key elements, but one dimension of the RTC formula needs strengthening for optimal control.";
+        evalTitle.textContent = "Good Attempt — Minor Calibration Needed (Score: 2/3)";
+        evalDesc.textContent = "You have captured two key pillars, but one dimension of the RTC formula needs tightening for complete control.";
       } else {
         evalCard.className = "eval-result eval-fail";
-        evalTitle.textContent = "Incomplete Prompt Structure (Score: " + score + "/3)";
-        evalDesc.textContent = "This prompt risks triggering uncalibrated, robotic AI output. Review the checklist below and adjust.";
+        evalTitle.textContent = "Uncalibrated Prompt (Score: " + score + "/3)";
+        evalDesc.textContent = "This prompt leaves too many gaps. The AI will guess the missing parameters and likely generate an unhelpful or stilted response.";
       }
     }
 
